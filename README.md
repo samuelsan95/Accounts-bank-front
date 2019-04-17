@@ -21,8 +21,6 @@ For can run this proyect you need the next:
 3- Metamask --> https://metamask.io/
 4- Ganache (For to be able to have fake accounts and import them in metamask)
 
-```
-
 ## Backend - Ethereum
 
 ### Installation and Deployment 🔧
