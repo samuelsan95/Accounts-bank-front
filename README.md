@@ -13,7 +13,7 @@ git clone https://github.com/samuelsan95/samuTokens-DApp.git
 
 See **Deployment** to know how to deploy the project.
 
-### Installation and Deployment  - smartcontract
+### Installation and Deployment - smartcontract
 
 The first step open a terminal inside the proyect and go to samuTokens-back folder
 ```
