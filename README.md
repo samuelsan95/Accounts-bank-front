@@ -13,9 +13,19 @@ git clone https://github.com/samuelsan95/samuTokens-DApp.git
 
 See **Deployment** to know how to deploy the project.
 
+### Pre-requirements 📋
+
+For can run this proyect you need the next:
+1- Node (Version 8 or higher)
+2- Truffle
+3- Metamask --> https://metamask.io/
+4- Ganache (For to be able to have fake accounts and import them in metamask)
+
+```
+
 ## Backend - Ethereum
 
-### Installation and Deployment
+### Installation and Deployment 🔧
 
 The first step open a terminal inside the proyect and go to samuTokens-back folder
 ```
@@ -35,7 +45,7 @@ truffle compile
 truffle deploy
 ```
 
-### Tests
+### Tests ⚙️
 
 Run the tests with truffle, with the next command:
 ```
@@ -44,7 +54,7 @@ truffle test
 
 ## Frontend - Angular
 
-### Installation and Deployment
+### Installation and Deployment 🔧
 
 The first step open a terminal inside the proyect and go to samuTokens-front folder
 ```
