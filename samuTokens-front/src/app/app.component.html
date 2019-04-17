@@ -1,0 +1,12 @@
+<app-header></app-header>
+<main>
+  <app-transfer-form *ngIf="transferFrom && bankService" 
+    [transferFrom]="transferFrom" [bankService]="bankService" [accounts]="accounts"
+    (isErrorGetBalance)="checkExistAccount($event)"></app-transfer-form>
+  <hr *ngIf="isNotExistAccount">
+  <div class="actions" *ngIf="isNotExistAccount">
+    <button mat-flat-button color="primary" type="button" class="trfbtn" (click)="openDialog()">
+      New account
+    </button>
+  </div>
+</main>

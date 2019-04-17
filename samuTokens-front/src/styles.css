@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Overwrite default styles of hr */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+/* Set a style for the submit button */
+.trfbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 10px;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    opacity: 0.9;
+}
+
+.trfbtn:hover {
+    opacity: 1;
+}
+
+/*Change style of angular material*/
+app-transfer-form .mat-mini-fab .mat-button-wrapper {
+    bottom: 10px;
+    line-height: 0px !important;
+    position: relative;
+}
+
+app-transfer-form .mat-card-header .mat-card-header-text, 
+app-transfer-form .mat-card-content {
+    width: 100%;
+    text-align: center;
+}
+
+app-transfer-form .mat-form-field {
+    width: 30%;
+}
