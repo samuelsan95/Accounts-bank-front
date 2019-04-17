@@ -35,7 +35,7 @@ Then you have to install all the dependencies
 npm install
 ```
 
-**Before deploying the contract you need to start ganache**
+**NOTE:** Before deploying the contract you need to start ganache
 
 Finally compile and deploy the BankContract with truffle
 ```
