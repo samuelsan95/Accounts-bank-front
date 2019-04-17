@@ -35,4 +35,28 @@ truffle compile
 truffle deploy
 ```
 
+### Tests
 
+Run the tests with truffle, with the next command:
+```
+truffle test
+```
+
+## Frontend - Angular
+
+### Installation and Deployment
+
+The first step open a terminal inside the proyect and go to samuTokens-front folder
+```
+cd samuTokens-front
+```
+
+Then you have to install all the dependencies
+```
+npm install
+```
+
+Finally you can init the application
+```
+npm run start
+```
