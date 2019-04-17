@@ -16,10 +16,10 @@ See **Deployment** to know how to deploy the project.
 ### Pre-requirements 📋
 
 For can run this proyect you need the next:
-1- Node (Version 8 or higher)
-2- Truffle
-3- Metamask --> https://metamask.io/
-4- Ganache (For to be able to have fake accounts and import them in metamask)
+- Node (Version 8 or higher)
+- Truffle
+- Metamask --> https://metamask.io/
+- Ganache (For to be able to have fake accounts and import them in metamask)
 
 ## Backend - Ethereum
 
