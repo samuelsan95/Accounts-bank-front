@@ -10,6 +10,8 @@ contract BankContract {
     mapping (address => bool) clientAccountsExist;
     address[] clientAccountsAddress;
 
+    event onTransferSamuTokens(address to, address from, uint samuTokens);
+
     modifier hasBalance(uint _samuTokens) {
         require(clientAccounts[msg.sender].balance >= _samuTokens);
         _;
@@ -40,6 +42,7 @@ contract BankContract {
     function transferSamuTokens(address _to, uint _samuTokens) public hasBalance(_samuTokens) {
         clientAccounts[_to].balance += _samuTokens;
         clientAccounts[msg.sender].balance -= _samuTokens;
+        emit onTransferSamuTokens(_to, msg.sender, _samuTokens);
     }
 
     function isOwner() public view returns(bool) {
