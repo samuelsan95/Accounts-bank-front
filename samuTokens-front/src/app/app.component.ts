@@ -46,6 +46,11 @@ export class AppComponent {
       window.ethereum.on('accountsChanged', (accounts: Array<string>) => {
         window.location.reload();
       });
+      console.log(this.BankInstance);
+
+      this.BankInstance.onTransferSamuTokens({}, (error, event) => {
+        console.log(event);
+      });
 
       const accountsWeb3 = await this.web3.eth.getAccounts();
       this.transferFrom = accountsWeb3[0];
