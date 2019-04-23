@@ -53,14 +53,12 @@ export class AppComponent {
       });
 
       // get balance and show notification when watch transfer samu tokens
-      this.BankInstance.onTransferSamuTokens({}, (error: any, event: any) => {
+      this.BankInstance.onTransferSamuTokens({}, async (error: any, event: any) => {
         const { to, from, samuTokens } = event.args;
         if (!error) {
           if ( this.transferFrom === to) {
-            setTimeout(async () => {
-              await this.transferForm.getBalanceByAddress();
-              this.showNotificationOfReceivedTransfer(from, Number(samuTokens));
-            }, 10000);
+            await this.transferForm.getBalanceByAddress();
+            this.showNotificationOfReceivedTransfer(from, Number(samuTokens));
           } else {
             console.log(`${samuTokens} samuTokens enviados a ${to}`);
           }
