@@ -1,14 +1,16 @@
 /** Angular core */
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
 /** Services */
+import { ToastrService } from 'ngx-toastr';
 import { EthcontractService } from './services/ethcontract.service';
 import { BankService } from './services/bank.service';
 import { getBankContractInstance } from './contracts/BankContract.js';
 
 /** Components */
 import { CreateModalComponent } from './components/modals/create-modal/create-modal.component';
+import { TransferFormComponent } from './components/transfer-form/transfer-form.component';
 
 declare let window: any;
 
@@ -18,6 +20,7 @@ declare let window: any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @ViewChild('transferForm') transferForm: TransferFormComponent;
   isShowFormNewAccount: boolean;
   nameNewAccount: string;
   web3: any;
@@ -28,6 +31,7 @@ export class AppComponent {
   isNotExistAccount: boolean;
 
   constructor(private ethcontractService: EthcontractService,
+              private toastr: ToastrService,
               public dialog: MatDialog) {
     this.init();
   }
@@ -43,13 +47,24 @@ export class AppComponent {
       this.web3 = await this.ethcontractService.getWeb3();
       this.BankInstance = await getBankContractInstance(this.web3.currentProvider);
 
+      // reload page when change account
       window.ethereum.on('accountsChanged', (accounts: Array<string>) => {
         window.location.reload();
       });
-      console.log(this.BankInstance);
 
-      this.BankInstance.onTransferSamuTokens({}, (error, event) => {
-        console.log(event);
+      // get balance and show notification when watch transfer samu tokens
+      this.BankInstance.onTransferSamuTokens({}, (error: any, event: any) => {
+        const { to, from, samuTokens } = event.args;
+        if (!error) {
+          if ( this.transferFrom === to) {
+            setTimeout(async () => {
+              await this.transferForm.getBalanceByAddress();
+              this.showNotificationOfReceivedTransfer(from, Number(samuTokens));
+            }, 10000);
+          } else {
+            console.log(`${samuTokens} samuTokens enviados a ${to}`);
+          }
+        }
       });
 
       const accountsWeb3 = await this.web3.eth.getAccounts();
@@ -116,5 +131,17 @@ export class AppComponent {
    */
   checkExistAccount(event: boolean): void {
     this.isNotExistAccount = event;
+  }
+
+/**
+ * Function for show notification when received a transfer
+ * @param from - Account that sent transfer
+ * @param samuTokens - coin of the contract
+ */
+  showNotificationOfReceivedTransfer(from: string, samuTokens: number): any {
+    console.log('Notifications sent ', from, samuTokens);
+    this.toastr.success(`${from} has sent you ${samuTokens} samuTokens`, 'Received Transfer', {
+      timeOut: 20000
+    });
   }
 }
