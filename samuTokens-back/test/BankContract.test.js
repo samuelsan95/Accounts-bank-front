@@ -1,3 +1,4 @@
+const truffleAssert = require('truffle-assertions');
 const BankContract = artifacts.require( 'BankContract' );
 
 let instance;
@@ -63,6 +64,17 @@ contract( 'BankContract', accounts => {
         }
 
         assert(false, 'should not allow tranfer tokens if sender balance < tokens to send');
+    });
+
+    it('should check event onTransferSamuTokens', async () => {
+        const name = "Samuel";
+        const tokens = 10;
+        await instance.createAccountBank(name, {from: accounts[1], gas: '500000'});
+        let result = await instance.transferSamuTokens(accounts[1], tokens, {from: accounts[0], gas: '500000'});
+        truffleAssert.eventEmitted(result, 'onTransferSamuTokens', (ev) => {
+            const { to, from, samuTokens } = ev;
+            return to === accounts[1] && from === accounts[0] && samuTokens.toNumber() === tokens; 
+        });
     });
 
     it('should is owner true', async() => {

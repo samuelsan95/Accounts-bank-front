@@ -7,7 +7,8 @@
     "test": "test"
   },
   "dependencies": {
-    "solidity-coverage": "^0.5.11"
+    "solidity-coverage": "^0.5.11",
+    "truffle-assertions": "^0.8.2"
   },
   "devDependencies": {},
   "scripts": {
