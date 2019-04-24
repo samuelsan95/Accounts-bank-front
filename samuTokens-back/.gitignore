@@ -13,7 +13,7 @@
 /node_modules
 
 #test
-coverage.json
+/coverage.json
 
 # profiling files
 chrome-profiler-events.json
