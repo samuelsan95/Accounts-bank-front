@@ -4,11 +4,16 @@
 /dist
 /tmp
 /out-tsc
+/build
+
 # Only exists if Bazel was run
 /bazel-out
 
 # dependencies
 /node_modules
+
+#test
+coverage.json
 
 # profiling files
 chrome-profiler-events.json
