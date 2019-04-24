@@ -52,6 +52,11 @@ Run the tests with truffle, with the next command:
 truffle test
 ```
 
+Run the coverage test, with the next command:
+```
+npm run coverage
+```
+
 ## Frontend - Angular
 
 ### Installation and Deployment 🔧
